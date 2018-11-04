@@ -14,7 +14,7 @@ def tts(string):
 def userSpoke(speech):
     print(speech)
     #try to make this say things like 5 past 1
-    if speech == "what's the time" or speech == "what is the time":
+    if "what's the time" or "what is the time" in speech :#speech == "what's the time" or speech == "what is the time":
         theTime = time.localtime()#[0, 0, 0, 1, 15]
 
         #convert military time
@@ -51,6 +51,7 @@ def listen():
     with sr.Microphone() as source:
         print("Listening...")
         audio = r.listen(source)
+        r.energy_threshold = 
         try:
             userSpoke(r.recognize_google(audio))
         except:
