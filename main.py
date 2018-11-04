@@ -43,7 +43,7 @@ def userSpoke(speech):
 
         #send arguments to function
         tts("The time is " + arguments)
-        print(arguments)
+        #print(arguments)
 
 #speech recognition
 def listen():
@@ -58,10 +58,10 @@ def listen():
 
 #wait for the user to give microphone permission
 #later we will change this to a phrase like "okay, python"
-userSpoke("what's the time")
-"""while True:
+#userSpoke("what's the time")
+while True:
     userInput = input("Would you like me to listen? (y/n)\n")
     if userInput == "y":
         listen()
     if userInput == "n":
-        quit()"""
+        quit()
