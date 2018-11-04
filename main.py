@@ -2,7 +2,7 @@ print("Starting...")
 
 #import
 from win32com.client import Dispatch
-import speech_recognition as sr
+import speech_recognition as sr #pip install SpeechRecognition/PyAudio
 import time
 
 #make tts speak
