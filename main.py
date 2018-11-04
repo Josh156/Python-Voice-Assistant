@@ -44,7 +44,7 @@ def userSpoke(speech):
         #send arguments to function
         tts("The time is " + arguments)
         #print(arguments)
-    elif speech == "fortnight":
+    elif speech == "fortnight" or speech == "fortnite":
         tts("Virgins")
 
 #speech recognition
