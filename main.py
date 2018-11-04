@@ -4,6 +4,7 @@ print("Starting...")
 from win32com.client import Dispatch
 import speech_recognition as sr #pip install SpeechRecognition/PyAudio
 import time
+import webbrowser
 
 #make tts speak
 speak = Dispatch("SAPI.SpVoice")
@@ -14,7 +15,7 @@ def tts(string):
 def userSpoke(speech):
     print(speech)
     #try to make this say things like 5 past 1
-    if speech == "what's the time" or speech == "what is the time":
+    if "what's the time" in speech or "what is the time" in speech:
         theTime = time.localtime()#[0, 0, 0, 1, 15]
 
         #convert military time
@@ -44,8 +45,11 @@ def userSpoke(speech):
         #send arguments to function
         tts("The time is " + arguments)
         #print(arguments)
-    elif speech == "fortnight" or speech == "fortnite":
+    elif speech == "fortnite players are":
         tts("Virgins")
+        tts("By the way fortnight dances are pretty cool!")
+    elif speech == "search for " + speech.split()[2] + " online":
+        webbrowser.open_new("https://www.bing.com/search?q=" + speech.split()[2] + "&qs=n&form=QBLH&sp=-1&pq=&sc=0-0&sk=&cvid=A033E86F19034F1AB1319EADE113793B")
 
 #speech recognition
 def listen():
