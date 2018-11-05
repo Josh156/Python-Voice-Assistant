@@ -51,7 +51,7 @@ def userSpoke(speech):
         elif speech.endswith("on youtube"):
             tts("This feature is coming soon!")
     #Some Fortnite meme
-    elif speech == "fortnite" or speech == "fortnite":
+elif speech == "fortnite" or speech == "fortnight":
         tts("Fortnite players are virgins, by the way fortnight dances are pretty cool!")
 
 #Does the SpeechRecognition stuff
