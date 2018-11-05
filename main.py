@@ -23,7 +23,9 @@ def userSpoke(speech):
         tts(CMDS.Time())
     #SearchOnWeb
     elif speech.startswith("search for"):
-        tts(CMDS.SearchOnWeb(speech))
+        results = CMDS.SearchOnWeb(speech)
+        tts(results[0])
+        print(results[1])
     #Some Fortnite meme
     elif speech == "fortnite" or speech == "fortnight":
         tts("Fortnite players are virgins, by the way fortnight dances are pretty cool!")
@@ -32,6 +34,7 @@ def userSpoke(speech):
         webbrowser.open("https://github.com/Josh1560/Python-Voice-Assistant")
 
 #Does the SpeechRecognition stuff
+#change this to a  return so it's a little more flexible
 def listen():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -47,15 +50,12 @@ def listen():
 while True:
     userInput = input("Would you like me to listen? (y/n)\n")
     if userInput == "y":
-        listen()
-        #userSpoke("search for remember the name on youtube")
-        #userSpoke("search for william osman on youtube")
+        #listen()
+        userSpoke("search for remember the name on youtube")
+        userSpoke("what is the time")
         #userSpoke("search for michael reeves on youtube")
     if userInput == "n":
         quit()
-
-
-
 
 
 

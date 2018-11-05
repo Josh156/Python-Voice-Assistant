@@ -25,7 +25,7 @@ def Time():
             arguments = "half past " + hour
         else:
             arguments = str(minute) + " minutes past " + hour
-    return "The time is " + arguments
+    return("The time is " + arguments)
 
 #SearchOnWeb
 #try to make it so people dont accidentally say bad words and get arrested by the FBI guy
@@ -35,19 +35,18 @@ from requests import get
 try:
     from bs4 import BeautifulSoup
 except:
-    print("Please install bs4")
+    print("Please install bs4!")
 def SearchOnWeb(speech):
     searchTerm = speech.split()[2:]
     if speech.endswith("online"):
         open("https://www.google.com/search?q=" + quote(" ".join(searchTerm[:-1])))
-        return "Searching for " + " ".join(searchTerm)
+        return("Searching for " + " ".join(searchTerm))
     elif speech.endswith("on youtube"):
         response = get("https://www.youtube.com/results?search_query=" + quote(" ".join(searchTerm[:-2])))
         soup = BeautifulSoup(response.text, "html.parser")
         videos = soup.findAll(attrs={"class":"yt-uix-tile-link"})[1:4]
         #Was [:3], changed to [1:4] to try to stop ads
         #Try to remove google ads if possible (May have fixed, but test this)
-        #Try to filter out channels, not sure if it's happening or not though
         #Later, make the user repeat the name or a number and it will open
         names = list()
         links = list()
@@ -58,4 +57,4 @@ def SearchOnWeb(speech):
             links.insert(i, "https://www.youtube.com" + videos[i]["href"])
         #test = ",".join(findall)
         print("I found 3 videos, " + ", ".join(names))
-        return "I found 3 videos, " + ", ".join(names)
+        return("I found 3 videos, " + ", ".join(names), links)
