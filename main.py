@@ -13,7 +13,7 @@ import CMDS
 #Start up TTS libraries.
 speak = Dispatch("SAPI.SpVoice")
 def tts(string):
-    speak.Speak(string)
+    speak.Speak(string)#make it not sound like a th0t
 
 #Triggers when the user speaks.
 def userSpoke(speech):
@@ -47,8 +47,10 @@ def listen():
 while True:
     userInput = input("Would you like me to listen? (y/n)\n")
     if userInput == "y":
-        #listen()
-        userSpoke("search for this is a test on youtube")
+        listen()
+        #userSpoke("search for remember the name on youtube")
+        #userSpoke("search for william osman on youtube")
+        #userSpoke("search for michael reeves on youtube")
     if userInput == "n":
         quit()
 
