@@ -49,7 +49,7 @@ def userSpoke(speech):
         if speech.endswith("online"):
             webbrowser.open("https://www.google.co.uk/search?q=" + quote(" ".join(searchTerm[:-1])))
         elif speech.endswith("on youtube"):
-            tts("This feature is coming soon...")
+            tts("This feature is coming soon!")
     #Some Fortnite meme
     elif "fortnite" in speech:
         tts("Fortnite players are virgins, by the way fortnight dances are pretty cool!")
