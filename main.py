@@ -18,7 +18,6 @@ def tts(string):
 #Triggers when the user speaks.
 def userSpoke(speech):
     print(speech)
-    #searchTerm = speech.split()[2:])
     #Time
     if "what's the time" in speech or "what is the time" in speech:
         theTime = time.localtime()
@@ -44,12 +43,11 @@ def userSpoke(speech):
                 arguments = str(minute) + " minutes past " + hour
         tts("The time is " + arguments)
     #Search Online
-    #elif searchTerm#search for " + searchTerm + " online" in speech:
     elif speech.startswith("search for"):
         searchTerm = speech.split()[2:]
-        #webbrowser.open("https://www.bing.com/search?q=" + quote(speech.split()[2])) + "&qs=n&form=QBLH&sp=-1&pq=&sc=0-0&sk=&cvid=A033E86F19034F1AB1319EADE113793B")
+        #webbrowser.open("https://www.bing.com/search?q=" + "PUT STUFF HERE" + "&qs=n&form=QBLH&sp=-1&pq=&sc=0-0&sk=&cvid=A033E86F19034F1AB1319EADE113793B")
         if speech.endswith("online"):
-            webbrowser.open("https://www.google.co.uk/search?q=" + quote(" ".join(searchTerm[:-1]))
+            webbrowser.open("https://www.google.co.uk/search?q=" + quote(" ".join(searchTerm[:-1])))
         elif speech.endswith("on youtube"):
             tts("This feature is coming soon...")
     #Some Fortnite meme
@@ -72,7 +70,7 @@ def listen():
 while True:
     userInput = input("Would you like me to listen? (y/n)\n")
     if userInput == "y":
-        #listen()
-        userSpoke("search for cool things on youtube")
+        listen()
+        #userSpoke("search for huhehu online")
     if userInput == "n":
         quit()
