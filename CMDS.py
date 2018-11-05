@@ -41,13 +41,12 @@ def SearchOnWeb(speech):
     if speech.endswith("online"):
         open("https://www.google.com/search?q=" + quote(" ".join(searchTerm[:-1])))
         return("Searching for " + " ".join(searchTerm))
-    elif speech.endswith("on youtube"):
+    elif speech.endswith("on YouTube"):
         response = get("https://www.youtube.com/results?search_query=" + quote(" ".join(searchTerm[:-2])))
         soup = BeautifulSoup(response.text, "html.parser")
         videos = soup.findAll(attrs={"class":"yt-uix-tile-link"})[1:4]
         #Was [:3], changed to [1:4] to try to stop ads
         #Try to remove google ads if possible (May have fixed, but test this)
-        #Later, make the user repeat the name or a number and it will open
         names = list()
         links = list()
         for i in range(len(videos)):
@@ -56,5 +55,5 @@ def SearchOnWeb(speech):
             #print(videos[i]["href"])
             links.insert(i, "https://www.youtube.com" + videos[i]["href"])
         #test = ",".join(findall)
-        print("I found 3 videos, " + ", ".join(names))
-        return("I found 3 videos, " + ", ".join(names), links)
+        #print("I found 3 videos, " + ", ".join(names))
+        return("I found 3 videos. " + ". ".join(names), links)
