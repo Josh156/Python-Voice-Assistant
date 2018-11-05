@@ -51,10 +51,10 @@ def listen():
         print("Listening...")
         r.adjust_for_ambient_noise(source)
         audio = r.listen(source)
-        try:
-            userSpoke(r.recognize_google(audio))
-        except:
-            tts("I couldn't quite catch that")
+        #try:
+        userSpoke(r.recognize_google(audio))
+        #except:
+            #tts("I couldn't quite catch that")
 
 #Later we will change this to a phrase like "okay, python"
 while True:

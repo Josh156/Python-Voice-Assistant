@@ -24,7 +24,7 @@ def Time():
             arguments = "half past " + hour
         else:
             arguments = str(minute) + " minutes past " + hour
-    tts("The time is " + arguments)
+    return "The time is " + arguments
 
 def SearchOnWeb(speech):
     searchTerm = speech.split()[2:]
