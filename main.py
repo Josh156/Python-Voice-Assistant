@@ -47,7 +47,7 @@ def userSpoke(speech):
         searchTerm = speech.split()[2:]
         #webbrowser.open("https://www.bing.com/search?q=" + "PUT STUFF HERE" + "&qs=n&form=QBLH&sp=-1&pq=&sc=0-0&sk=&cvid=A033E86F19034F1AB1319EADE113793B")
         if speech.endswith("online"):
-            webbrowser.open("https://www.google.co.uk/search?q=" + quote(" ".join(searchTerm[:-1])))
+            webbrowser.open("https://www.google.com/search?q=" + quote(" ".join(searchTerm[:-1])))
         elif speech.endswith("on youtube"):
             tts("This feature is coming soon!")
     #Some Fortnite meme
