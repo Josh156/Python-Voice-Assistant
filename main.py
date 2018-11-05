@@ -5,6 +5,8 @@ from win32com.client import Dispatch
 import time, webbrowser
 from urllib.parse import quote
 
+import CMDS
+
 try:
     import speech_recognition as sr
 except:
@@ -25,13 +27,12 @@ def userSpoke(speech):
     print(speech)
     #Time
     if "what's the time" in speech or "what is the time" in speech:
-        
+        CMDS.Time()
     #Search Online
     elif speech.startswith("search for"):
-        searchTerm = speech.split()[2:]
-        #webbrowser.open("https://www.bing.com/search?q=" + "PUT STUFF HERE" + "&qs=n&form=QBLH&sp=-1&pq=&sc=0-0&sk=&cvid=A033E86F19034F1AB1319EADE113793B")
-        if speech.endswith("online"):
-            webbrowser.open("https://www.google.com/search?q=" + quote(" ".join(searchTerm[:-1])))
+        if True:
+            print("Hello World!")
+            #search online code was moved to CMDS.py
         elif speech.endswith("on youtube"):
             #tts("This feature is coming soon!")
 
