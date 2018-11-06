@@ -17,3 +17,4 @@
 - [ ] Add weather command
 - [ ] Add flip a coin command
 - [ ] Calendar stuff maybe?
+- [ ] Change TTS voice **OR** Change to Pytts
