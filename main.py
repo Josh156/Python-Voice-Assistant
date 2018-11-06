@@ -14,10 +14,8 @@ import CMDS
 #Start up TTS libraries.
 speak = Dispatch("SAPI.SpVoice")
 def tts(string):
-    if string == None:
-        print("tts was passed none, something went wrong")
-    else:
-        speak.Speak(string)#make it not sound like a th0t
+    if string != None:
+        speak.Speak(string)#Change the voice so it doesnt sound like a thot.
 
 #Extract what's needed from play and search commands.
 def extract(results):
@@ -35,8 +33,8 @@ def extract(results):
 
 #Triggers when the user speaks.
 def userSpoke(speech):
-    print(speech)
     if speech != None:
+        print(speech)
         #Time
         if speech == "what's the time" or speech == "what is the time":
             tts(CMDS.Time())
@@ -71,9 +69,6 @@ def listen():
 while True:
     userInput = input("Would you like me to listen? (y/n)\n")
     if userInput == "y":
-        #userSpoke(listen())
-        #userSpoke("search for remember the name on YouTube")
-        userSpoke("play remember the name on YouTube")
-        #userSpoke("search for michael reeves online")
+        userSpoke(listen())
     if userInput == "n":
         quit()

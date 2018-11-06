@@ -1,7 +1,9 @@
 #Later each command will be moved to its own py file.
+#Commands that require the same libraries will be put together
 #The commands will be required from their dir when needed.
 
 #Time
+#Finish off testing this feature
 from time import localtime
 def Time():
     theTime = localtime()
