@@ -14,40 +14,48 @@ import CMDS
 #Start up TTS libraries.
 speak = Dispatch("SAPI.SpVoice")
 def tts(string):
-    speak.Speak(string)#make it not sound like a th0t
+    if string == None:
+        print("tts was passed none, something went wrong")
+    else:
+        speak.Speak(string)#make it not sound like a th0t
+
+#Extract what's needed from play and search commands.
+def extract(results):
+    if type(results) == tuple:
+        tts(results[0])
+        tts("Which would you like to select; 1, 2, or 3?")
+        speech = listen()
+        if type(speech) != None:#speech.isdigit() and type(speech) != None:
+            try:
+                open(results[1][int(speech) - 1])
+            except:
+                pass
+    else:
+        tts(results)
 
 #Triggers when the user speaks.
 def userSpoke(speech):
+    print(speech)
     if speech != None:
-        print(speech)
         #Time
-        if "what's the time" in speech or "what is the time" in speech:
+        if speech == "what's the time" or speech == "what is the time":
             tts(CMDS.Time())
-        #SearchOnWeb
+        #Play
+        elif speech.startswith("play"):
+            extract(CMDS.Play(speech))
+        #Search
         elif speech.startswith("search for"):
-            results = CMDS.SearchOnWeb(speech)
-            #THE FOLLOWING FEW LINES ARE A PAIN IN THE ASS
-            #Basically more efficient, but more likely to crash and burn
-            if type(results) == tuple:
-                tts(results[0])
-                tts("Which would you like to select; 1, 2, or 3?")
-                speech = listen()
-                if speech.isdigit():
-                    try:
-                        open(results[1][int(speech) - 1])
-                    except:
-                        pass
-            else:
-                tts(results)
+            extract(CMDS.Search(speech))
         #Some Fortnite meme
         elif speech == "fortnite" or speech == "fortnight":
             tts("Fortnite players are virgins, by the way fortnight dances are pretty cool!")
         #github repo
         elif speech == "open your github repository":
             webbrowser.open("https://github.com/Josh1560/Python-Voice-Assistant")
+        else:
+            tts("I'm sorry, I didn't recognise that command.")
 
 #Does the SpeechRecognition stuff
-#change this to a  return so it's a little more flexible
 def listen():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -63,9 +71,9 @@ def listen():
 while True:
     userInput = input("Would you like me to listen? (y/n)\n")
     if userInput == "y":
-        userSpoke(listen())
-        #userSpoke("search for remember the name on youtube")
-        #userSpoke("what is the time")
+        #userSpoke(listen())
+        #userSpoke("search for remember the name on YouTube")
+        userSpoke("play remember the name on YouTube")
         #userSpoke("search for michael reeves online")
     if userInput == "n":
         quit()
