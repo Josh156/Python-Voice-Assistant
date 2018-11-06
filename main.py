@@ -49,7 +49,7 @@ def userSpoke(speech):
             tts("Fortnite players are virgins, by the way fortnight dances are pretty cool!")
         #github repo
         elif speech == "open your github repository":
-            webbrowser.open("https://github.com/Josh1560/Python-Voice-Assistant")
+            open("https://github.com/Josh1560/Python-Voice-Assistant")
         else:
             tts("I'm sorry, I didn't recognise that command.")
 
