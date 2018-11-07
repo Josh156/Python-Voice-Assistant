@@ -2,12 +2,36 @@
 #Commands that require the same libraries will be put together
 #The commands will be required from their dir when needed.
 
+#Date
+#you should track your date and not ask a robot to tell you what the date is
+from time import localtime
+def Date():
+    theTime = localtime()
+    day_list = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    month_list = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    monthDay = theTime[2]
+    if monthDay == 1:
+        date = "first"
+    elif monthDay == 2:
+        date = "second"
+    elif monthDay == 3:
+        date = "third"
+    else:
+        if monthDay > 20:
+            if str(monthDay)[-1] == "1":
+                date = str(round(monthDay, -1)) + " first"
+            elif str(monthDay)[-1] == "2":
+                date = str(round(monthDay, -1)) + " second"
+            elif str(monthDay)[-1] == "3":
+                date = str(round(monthDay, -1)) + " third"
+            else:
+                date = str(monthDay) + "th"
+        else:
+            date = str(monthDay) + "th"
+    return("Today is, " + day_list[theTime[6]] + ", the " + date + " of " + month_list[theTime[1] - 1])
+
 #Time
 #Finish off testing this feature
-from time import localtime
-from datetime import datetime
-from weather import Weather, Unit
-import json
 def Time():
     theTime = localtime()
     if theTime[3] > 12:
@@ -65,38 +89,19 @@ def Search(speech):
     elif speech.endswith("on YouTube"):
         return(Play(speech[6:]))
 
-#Date
-#you should track your date and not ask a robot to tell you what the date is
-def Date():
-    day_list = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    month_list = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    raw_date = str(datetime.today()).split()[0]
-    date = raw_date.split("-")
-    day = day_list[int(datetime.today().weekday())-1]
-    month = month_list[int(datetime.today().month)-1]
-    if day == day_list[0]:
-        tts_data = "Today is {}, first {} {}".format(day, month_list[int(date[1])], date[0])
-        return tts_data
-    elif day == day_list[1]:
-        tts_data = "Today is {}, second {} {}".format(day, month_list[int(date[1])], date[0])
-        return tts_data
-    elif day == day_list[2]:
-        tts_data = "Today is {}, third {} {}".format(day, month_list[int(date[1])], date[0])
-        return tts_data
-    else:
-        tts_data = "Today is {}, {}th {} {}".format(day, date[2], month_list[int(date[1])], date[0])
-        return tts_data
-
-#Weather
+#theWeather
 #uses your ip to get your approximate geolocation to give the correct weather status
-def CW():
-    url = "http://ipinfo.io/json"
-    r = get(url)
-    j = json.loads(r.text)
-    latlng = j["loc"].split(',')
-    lat = float(latlng[0])
-    lng = float(latlng[1])
-    w = Weather(unit=Unit.CELSIUS)
-    lookup = w.lookup_by_latlng(lat, lng)
+from json import loads
+try:
+    from weather import Weather, Unit
+except:
+    print("Please install weather-api!")
+def theWeather():
+    response = get("http://ipinfo.io/json")
+    responseDecode = loads(response.text)
+    latlon = responseDecode["loc"].split(",")
+    weather = Weather(unit=Unit.CELSIUS)
+    lookup = weather.lookup_by_latlng(latlon[0], latlon[1])
     condition = lookup.condition
-    return "It's {}".format(condition.text)
+    #print("Currently, in " + responseDecode["city"] + " it is " + condition.temp + " degrees")
+    return("Currently, in " + responseDecode["city"] + " it is " + condition.temp + " degrees")

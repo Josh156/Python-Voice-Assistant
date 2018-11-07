@@ -36,8 +36,11 @@ def extract(results):
 def userSpoke(speech):
     if speech != None:
         print(speech)
+        #Date
+        if speech == "what's the date" or speech == "what is the date":
+            tts(CMDS.Date())
         #Time
-        if speech == "what's the time" or speech == "what is the time":
+        elif speech == "what's the time" or speech == "what is the time":
             tts(CMDS.Time())
         #Play
         elif speech.startswith("play"):
@@ -45,17 +48,15 @@ def userSpoke(speech):
         #Search
         elif speech.startswith("search for"):
             extract(CMDS.Search(speech))
+        #theWeather
+        elif speech == "what's the weather" or speech == "what is the weather" or speech == "what is the weather like" or speech == "what's the weather like":
+            tts(CMDS.theWeather())
         #Some Fortnite meme
         elif speech == "fortnite" or speech == "fortnight":
             tts("Fortnite players are virgins, by the way fortnight dances are pretty cool!")
         #github repo
         elif speech == "open your github repository":
             open("https://github.com/Josh1560/Python-Voice-Assistant")
-        #date
-        elif speech == "what's the date" or speech == "what is the date":
-            tts(CMDS.Date())
-        elif speech == "what's the weather" or speech == "what is the weather" or speech == "what is the weather like" or speech == "what's the weather like":
-            tts(CMDS.CW())
         else:
             tts("I'm sorry, I didn't recognise that command.")
 
