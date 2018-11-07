@@ -5,6 +5,7 @@
 #Time
 #Finish off testing this feature
 from time import localtime
+from datetime import datetime
 def Time():
     theTime = localtime()
     if theTime[3] > 12:
@@ -61,3 +62,25 @@ def Search(speech):
         return("Searching for " + " ".join(searchTerm))
     elif speech.endswith("on YouTube"):
         return(Play(speech[6:]))
+
+#Date
+#for all of the faggits that dont track their date, jk i dont track the date myself
+def Date():
+    day_list = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    month_list = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    raw_date = str(datetime.today()).split()[0]
+    date = raw_date.split("-")
+    day = day_list[int(datetime.today().weekday())-1]
+    month = month_list[int(datetime.today().month)-1]
+    if day == day_list[0]:
+        tts_data = "Today is {}, first {} {}".format(day, month_list[int(date[1])], date[0])
+        return tts_data
+    elif day == day_list[1]:
+        tts_data = "Today is {}, second {} {}".format(day, month_list[int(date[1])], date[0])
+        return tts_data
+    elif day == day_list[2]:
+        tts_data = "Today is {}, third {} {}".format(day, month_list[int(date[1])], date[0])
+        return tts_data
+    else:
+        tts_data = "Today is {}, {}th {} {}".format(day, date[2], month_list[int(date[1])], date[0])
+        return tts_data

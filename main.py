@@ -3,6 +3,7 @@ print("Starting...")
 #Import necessary libraries.
 from win32com.client import Dispatch
 from webbrowser import open
+from datetime import datetime
 try:
     import speech_recognition as sr
 except:
@@ -50,6 +51,9 @@ def userSpoke(speech):
         #github repo
         elif speech == "open your github repository":
             open("https://github.com/Josh1560/Python-Voice-Assistant")
+        #date
+        elif speech == "what's the date" or speech == "what is the date":
+            tts(CMDS.Date())
         else:
             tts("I'm sorry, I didn't recognise that command.")
 
