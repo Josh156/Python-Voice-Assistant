@@ -54,6 +54,8 @@ def userSpoke(speech):
         #date
         elif speech == "what's the date" or speech == "what is the date":
             tts(CMDS.Date())
+        elif speech == "what's the weather" or speech == "what is the weather" or speech == "what is the weather like" or speech == "what's the weather like":
+            tts(CMDS.CW())
         else:
             tts("I'm sorry, I didn't recognise that command.")
 

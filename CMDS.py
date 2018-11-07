@@ -6,6 +6,8 @@
 #Finish off testing this feature
 from time import localtime
 from datetime import datetime
+from weather import Weather, Unit
+import json
 def Time():
     theTime = localtime()
     if theTime[3] > 12:
@@ -84,3 +86,17 @@ def Date():
     else:
         tts_data = "Today is {}, {}th {} {}".format(day, date[2], month_list[int(date[1])], date[0])
         return tts_data
+
+#Weather
+#uses your ip to get your approximate geolocation to give the correct weather status
+def CW():
+    url = "http://ipinfo.io/json"
+    r = get(url)
+    j = json.loads(r.text)
+    latlng = j["loc"].split(',')
+    lat = float(latlng[0])
+    lng = float(latlng[1])
+    w = Weather(unit=Unit.CELSIUS)
+    lookup = w.lookup_by_latlng(lat, lng)
+    condition = lookup.condition
+    return "It's {}".format(condition.text)
