@@ -9,10 +9,12 @@ except:
     print("Please install SpeechRecognition and PyAudio!")
 
 #Import commands.
-import cmds_json_required as json_required
-import cmds_offline as offline
-import cmds_os_based as os_based
-import cmds_web_based as web_based
+from sys import path
+path.insert(0, "./commands")
+import json_required
+import offline
+import os_based
+import web_based
 
 #Start up TTS libraries.
 speak = Dispatch("SAPI.SpVoice")
