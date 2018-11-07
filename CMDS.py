@@ -64,7 +64,7 @@ def Search(speech):
         return(Play(speech[6:]))
 
 #Date
-#for all of the faggits that dont track their date, jk i dont track the date myself
+#you should track your date and not ask a robot to tell you what the date is
 def Date():
     day_list = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     month_list = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
