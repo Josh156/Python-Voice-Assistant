@@ -1,10 +1,11 @@
+#TheWeather
 from requests import get
 from json import loads
 try:
     from weather import Weather, Unit
 except:
     print("Please install weather-api!")
-def theWeather():
+def TheWeather():
     response = get("http://ipinfo.io/json")
     responseDecode = loads(response.text)
     latlon = responseDecode["loc"].split(",")

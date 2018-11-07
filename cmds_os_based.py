@@ -1,3 +1,4 @@
+#Date
 from time import localtime
 def Date():
     theTime = localtime()
@@ -24,6 +25,7 @@ def Date():
             date = str(monthDay) + "th"
     return("Today is, " + day_list[theTime[6]] + ", the " + date + " of " + month_list[theTime[1] - 1])
 
+#Time
 def Time():
     theTime = localtime()
     if theTime[3] > 12:

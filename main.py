@@ -3,20 +3,23 @@ print("Starting...")
 #Import necessary libraries.
 from win32com.client import Dispatch
 from webbrowser import open
-from datetime import datetime
 try:
     import speech_recognition as sr
 except:
     print("Please install SpeechRecognition and PyAudio!")
 
 #Import commands.
-import CMDS
+import cmds_json_required as json_required
+import cmds_offline as offline
+import cmds_os_based as os_based
+import cmds_web_based as web_based
 
 #Start up TTS libraries.
 speak = Dispatch("SAPI.SpVoice")
 def tts(string):
     if string != None:
-        speak.Speak(string)#Change the voice so it doesnt sound like a thot.
+        speak.Speak(string)
+        #Change the voice so it doesnt sound like a thot.
 
 #Extract what's needed from play and search commands.
 def extract(results):
@@ -38,19 +41,19 @@ def userSpoke(speech):
         print(speech)
         #Date
         if speech == "what's the date" or speech == "what is the date":
-            tts(CMDS.Date())
+            tts(os_based.Date())
         #Time
         elif speech == "what's the time" or speech == "what is the time":
-            tts(CMDS.Time())
+            tts(os_based.Time())
         #Play
         elif speech.startswith("play"):
-            extract(CMDS.Play(speech))
+            extract(web_based.Play(speech))
         #Search
         elif speech.startswith("search for"):
-            extract(CMDS.Search(speech))
-        #theWeather
+            extract(web_based.Search(speech))
+        #TheWeather
         elif speech == "what's the weather" or speech == "what is the weather" or speech == "what is the weather like" or speech == "what's the weather like":
-            tts(CMDS.theWeather())
+            tts(json_required.TheWeather())
         #Some Fortnite meme
         elif speech == "fortnite" or speech == "fortnight":
             tts("Fortnite players are virgins, by the way fortnight dances are pretty cool!")
@@ -76,6 +79,7 @@ def listen():
 while True:
     userInput = input("Would you like me to listen? (y/n)\n")
     if userInput == "y":
-        userSpoke(listen())
+        #userSpoke(listen())
+        userSpoke("what's the weather")
     if userInput == "n":
         quit()

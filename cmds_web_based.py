@@ -1,4 +1,4 @@
-from webbrowser import open
+#Play
 from urllib.parse import quote
 from requests import get
 try:
@@ -20,6 +20,8 @@ def Play(speech):
             links.insert(i, "https://www.youtube.com" + videos[i]["href"])
         return("I found 3 videos. " + ". ".join(names), links)
 
+#Search
+from webbrowser import open
 def Search(speech):
     searchTerm = speech.split()[2:]
     if speech.endswith("online"):
