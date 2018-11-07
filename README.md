@@ -1,4 +1,11 @@
 # Python Voice Assistant
+## Required Libraries:
+* [weather-api](https://pypi.org/project/weather-api/)
+  - pip install weather-api
+* [SpeechRecognition](https://pypi.org/project/SpeechRecognition/)
+  - pip install SpeechRecognition
+* [bs4](https://pypi.org/project/bs4/)
+  - pip install bs4
 ## Current Commands:
 * Tell the date:
   - "What's the date" or "What is the date".
@@ -23,3 +30,4 @@
 - [ ] Calendar stuff maybe?
 - [ ] Change TTS voice **OR** Change to Pytts
 - [ ] Add fun commands
+- [ ] Try to move cmds into a folder
