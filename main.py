@@ -56,6 +56,10 @@ def userSpoke(speech):
         #TheWeather
         elif speech == "what's the weather" or speech == "what is the weather" or speech == "what is the weather like" or speech == "what's the weather like":
             tts(json_required.TheWeather())
+        elif speech == "roll a die" or speech == "roll a dice":
+            tts(offline.Dice())
+        elif speech == "flip a coin":
+            tts(offline.Coin())
         #Some Fortnite meme
         elif speech == "fortnite" or speech == "fortnight":
             tts("Fortnite players are virgins, by the way fortnight dances are pretty cool!")
@@ -81,7 +85,6 @@ def listen():
 while True:
     userInput = input("Would you like me to listen? (y/n)\n")
     if userInput == "y":
-        #userSpoke(listen())
-        userSpoke("what's the weather")
+        userSpoke(listen())
     if userInput == "n":
         quit()
