@@ -17,6 +17,10 @@
   - "Search for _NAME_ online".
 * Find the current weather:
   - "What's the weather", "What is the weather", "What's the weather like" or "What is the weather like".
+* Roll a die:
+  - "Roll a die" or "Roll a dice".
+* Flip a coin:
+  - "Flip a coin"
 * Extra commands:
   - Make the Assistant talk about Fortnite...
     - "Fortnite"
@@ -26,8 +30,8 @@
 - [ ] Finish off README.md
 - [X] Add date command
 - [X] Add weather command
-- [ ] Add flip a coin command
+- [X] Add flip a coin command
 - [ ] Calendar stuff maybe?
 - [ ] Change TTS voice **OR** Change to Pytts
 - [X] Try to move cmds into a folder
-- [ ] Add roll a die command
+- [X] Add roll a die command
