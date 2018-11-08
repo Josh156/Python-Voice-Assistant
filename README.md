@@ -29,5 +29,5 @@
 - [ ] Add flip a coin command
 - [ ] Calendar stuff maybe?
 - [ ] Change TTS voice **OR** Change to Pytts
-- [ ] Add fun commands
-- [ ] Try to move cmds into a folder
+- [X] Try to move cmds into a folder
+- [ ] Add roll a die command
