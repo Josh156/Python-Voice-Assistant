@@ -21,6 +21,8 @@
   - "Roll a die" or "Roll a dice".
 * Flip a coin:
   - "Flip a coin"
+* Take a screenshot:
+  - "Take a screenshot" or "Take a screenshot of my screen"
 * Extra commands:
   - Make the Assistant talk about Fortnite...
     - "Fortnite"
