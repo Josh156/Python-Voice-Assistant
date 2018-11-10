@@ -1,3 +1,5 @@
+import os
+
 #Date
 from time import localtime
 def Date():
@@ -49,3 +51,20 @@ def Time():
         else:
             arguments = str(minute) + " minutes past " + hour
     return("The time is " + arguments)
+
+#Take a screenshot
+from PIL import Image
+import pyautogui
+def Screenshot():
+    year = str(localtime().tm_year)
+    month = str(localtime().tm_mon)
+    day = str(localtime().tm_mday)
+    hour = str(localtime().tm_hour)
+    minute = str(localtime().tm_min)
+    second = str(localtime().tm_sec)
+    Date = "{}{}{}{}{}{}.png".format(year, month, day, hour, minute, second)
+    User = os.getlogin()
+    SavePath = r"C:\Users\{}\Pictures".format(User)
+    pyautogui.screenshot(os.path.join(SavePath, Date))
+    im = Image.open(os.path.join(SavePath, Date))
+    im.show()

@@ -66,6 +66,9 @@ def userSpoke(speech):
         #github repo
         elif speech == "open your github repository":
             open("https://github.com/Josh1560/Python-Voice-Assistant")
+        elif speech == "take a screenshot" or speech == "take a screenshot of my screen":
+            tts("Your screenshot was saved in your pictures folder")
+            extract(os_based.Screenshot())
         else:
             tts("I'm sorry, I didn't recognise that command.")
 
